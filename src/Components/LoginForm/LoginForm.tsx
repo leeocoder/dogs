@@ -2,10 +2,11 @@ import React, { FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../From/Input';
 import Button from '../From/Button';
+import useForm from '../../Hooks/useForm';
 
 function LoginForm() {
-  const [username, setUsername] = React.useState<string>('');
-  const [password, setPassword] = React.useState<string>('');
+  const username = useForm();
+  const password = useForm();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -15,8 +16,8 @@ function LoginForm() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username,
-        password,
+        username: username.value,
+        password: password.value,
       }),
     })
       .then((response) => {
@@ -39,11 +40,13 @@ function LoginForm() {
           label='Usuário'
           type='text'
           name='username'
+          {...username}
         />
         <Input
           label='Senha'
           type='password'
           name='password'
+          {...password}
         />
         <Button>Entrar</Button>
         <Link to='/login/esqueci-senha'>Esqueci minha senha</Link>

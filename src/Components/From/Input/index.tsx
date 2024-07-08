@@ -5,9 +5,13 @@ type Props = {
   label: string;
   type: string;
   name: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onBlur: () => boolean;
+  value: string | undefined;
+  error: string | null;
 };
 
-function Input({ label, type, name }: Props) {
+function Input({ label, type, name, value, onChange, error, onBlur }: Props) {
   return (
     <div className='input-wrapper'>
       <label
@@ -21,8 +25,11 @@ function Input({ label, type, name }: Props) {
         type={type}
         id={name}
         name={name}
+        onChange={onChange}
+        onBlur={onBlur}
+        value={value}
       />
-      <small className='error'>Error</small>
+      {error && <small className='error'>{error}</small>}
     </div>
   );
 }
