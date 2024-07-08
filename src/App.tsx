@@ -15,7 +15,7 @@ function App() {
           element={<Home />}
         />{' '}
         <Route
-          path='/login'
+          path='/login/*'
           element={<Login />}
         />
       </Routes>
