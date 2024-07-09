@@ -1,5 +1,6 @@
 import React from 'react';
 import './input.css';
+import Error from '../../../Helpers/Error';
 
 type Props = {
   label: string;
@@ -29,7 +30,7 @@ function Input({ label, type, name, value, onChange, error, onBlur }: Props) {
         onBlur={onBlur}
         value={value}
       />
-      {error && <small className='error'>{error}</small>}
+      <Error error={error} />
     </div>
   );
 }
