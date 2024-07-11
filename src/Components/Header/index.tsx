@@ -20,7 +20,7 @@ const Header = () => {
         {!data && (
           <Link
             to='/login'
-            className='login'
+            className='loginHeader'
           >
             Login / Criar
           </Link>
@@ -28,7 +28,7 @@ const Header = () => {
         {data && (
           <Link
             to='/conta'
-            className='login'
+            className='loginHeader'
           >
             Minha conta
           </Link>

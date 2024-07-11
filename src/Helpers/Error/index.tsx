@@ -4,7 +4,7 @@ type ErrorProps = {
 
 const Error = ({ error }: ErrorProps) => {
   if (!error) return null;
-  return <small className='errorMessage'>{error}</small>;
+  return <p className='errorMessage'>{error}</p>;
 };
 
 export default Error;
