@@ -15,17 +15,13 @@ const UserStorage = ({ children }: UserContextProps) => {
   const [error, setError] = React.useState<string | null>(null);
   const navigate = useNavigate();
 
-  const userLogout = React.useCallback(
-    async function () {
-      setData(null);
-      setError(null);
-      setLoading(false);
-      setIsLoggedIn(false);
-      window.localStorage.removeItem('token');
-      navigate('/login');
-    },
-    [navigate]
-  );
+  const userLogout = React.useCallback(async function () {
+    setData(null);
+    setError(null);
+    setLoading(false);
+    setIsLoggedIn(false);
+    window.localStorage.removeItem('token');
+  }, []);
 
   async function getUser(token: string) {
     const { options, url } = USER_GET(token);

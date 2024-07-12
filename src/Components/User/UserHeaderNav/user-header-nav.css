@@ -1,0 +1,39 @@
+.userHeaderNav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.userHeaderNav a,
+.userHeaderNav button {
+  background: #eee;
+  border-radius: 0.2rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  transition: 0.1s;
+  cursor: pointer;
+}
+
+.userHeaderNav a:hover,
+.userHeaderNav a:focus,
+.userHeaderNav button:hover,
+.userHeaderNav button:focus {
+  background: white;
+  box-shadow: 0 0 0 3px #eee;
+  border-color: #333;
+  outline: none;
+}
+
+.userHeaderNav a.active {
+  background: white;
+  box-shadow: 0 0 0 3px #fea;
+  border-color: #fb1;
+}
+
+.userHeaderNav a.active svg > * {
+  fill: #fb1;
+}
