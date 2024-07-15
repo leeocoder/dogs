@@ -8,11 +8,14 @@ import AddPhotoIcon from '../../../Assets/adicionar.svg?react';
 import LogoutIcon from '../../../Assets/sair.svg?react';
 
 import './user-header-nav.css';
+import useMedia from '../../../Hooks/useMedia';
 
 const UserHeaderNav = () => {
   const navigate = useNavigate();
-  const [mobile, setMobile] = React.useState(null);
   const { userLogout } = React.useContext(UserContext);
+  const [mobileMenu, setMobileMenu] = React.useState(false);
+
+  const mobile = useMedia('(max-width: 40rem)');
 
   function handleLogout() {
     userLogout();
@@ -20,24 +23,37 @@ const UserHeaderNav = () => {
   }
 
   return (
-    <nav className='userHeaderNav'>
-      <NavLink to='/conta'>
-        <FeedIcon />
-        {mobile && 'Minhas Fotos'}
-      </NavLink>
-      <NavLink to='/conta/estatistica'>
-        <StatsIcon />
-        {mobile && 'Estatística'}
-      </NavLink>
-      <NavLink to='/conta/postar'>
-        <AddPhotoIcon />
-        {mobile && 'Adicionar Foto'}
-      </NavLink>
-      <button onClick={handleLogout}>
-        <LogoutIcon />
-        {mobile && 'Sair'}
-      </button>
-    </nav>
+    <>
+      {mobile && (
+        <button
+          className={`mobileButton ${mobileMenu && 'mobile-button-active'}`}
+          aria-label='Menu'
+          onClick={() => setMobileMenu(!mobileMenu)}
+        ></button>
+      )}
+      <nav
+        className={`${!mobile ? 'userHeaderNav' : 'userMobileNav'} ${
+          mobileMenu && 'userMobileNavActive'
+        }`}
+      >
+        <NavLink to='/conta'>
+          <FeedIcon />
+          {mobile && 'Minhas Fotos'}
+        </NavLink>
+        <NavLink to='/conta/estatistica'>
+          <StatsIcon />
+          {mobile && 'Estatística'}
+        </NavLink>
+        <NavLink to='/conta/postar'>
+          <AddPhotoIcon />
+          {mobile && 'Adicionar Foto'}
+        </NavLink>
+        <button onClick={handleLogout}>
+          <LogoutIcon />
+          {mobile && 'Sair'}
+        </button>
+      </nav>
+    </>
   );
 };
 

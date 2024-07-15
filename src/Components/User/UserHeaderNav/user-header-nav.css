@@ -37,3 +37,48 @@
 .userHeaderNav a.active svg > * {
   fill: #fb1;
 }
+
+.mobileButton {
+  background: #eee;
+  border-radius: 0.2rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  transition: 0.1s;
+  cursor: pointer;
+}
+
+.mobileButton::after {
+  display: block;
+  content: '';
+  width: 1.2rem;
+  height: 0.125rem;
+  border-radius: 0.125rem;
+  background: currentColor;
+  box-shadow: 0 6px currentColor, 0 -6px currentColor;
+  transition: 0.2s;
+}
+
+.mobileButton:focus,
+.mobileButton:hover,
+.mobile-button-active {
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 3px #fea;
+  border-color: #fb1;
+  color: #fb1;
+}
+
+.mobile-button-active::after {
+  transform: rotate(90deg);
+  width: 0.25rem;
+  height: 0.25rem;
+  box-shadow: 0 8px currentColor, 0 -8px currentColor;
+}
+
+.userMobileNav {
+}
